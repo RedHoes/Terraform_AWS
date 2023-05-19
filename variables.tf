@@ -1,10 +1,10 @@
 variable "cli_usr_access_key" {
   type    = string
-  default = "AKIA6PKD3NN46CYGFZH4" # specify the access key
+  default = "AKIA6Pxxxxxxxxxxxxx" # specify the access key
 }
 variable "cli_usr_secret_key" {
   type    = string
-  default = "TpxiKRHCbCoNdIzoFUZo0RH9YMCQrFQkjQlgN++a" # specify the secret key
+  default = "TpxiKRHCbxxxxxxxxxxxxxxx" # specify the secret key
 }
 variable "region" {
   type    = string
