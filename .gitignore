@@ -1,8 +1,11 @@
+.vscode
 .terraform
+.terraform.lock.hcl
 .DS_Store
 .idea
 *.retry
 *.log
 *.plan
-*.tfvars
 *.tfstate*
+secret/*
+
