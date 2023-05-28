@@ -1,11 +1,7 @@
-resource "aws_key_pair" "long-key-pair" {
-  key_name   = "Lab1 KeyGen"
-  public_key = file("~/.ssh/id_rsa.pub")
-}
-
 resource "aws_security_group" "lab1_security_group" {
   name        = "lab1_SC"
   description = "Security group for EC2 instances"
+  vpc_id      = var.vpc_id
   # Allow port 22,80,443 for inbound traffic
   ingress {
     from_port   = 22
@@ -55,7 +51,6 @@ resource "aws_instance" "lab1_ec2_instances" {
   subnet_id                 = var.subnet_id[count.index]
   ami                       = var.ami
   vpc_security_group_ids  = [aws_security_group.lab1_security_group.id]
-  key_name                  = aws_key_pair.long-key-pair.id
 
 
   user_data = <<-EOF

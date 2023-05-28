@@ -62,7 +62,7 @@ resource "aws_lb_target_group_attachment" "instance_attachment" {
   count            = 2
   target_group_arn = aws_lb_target_group.trainee_target_group.arn
   # target_id      = data.terraform_remote_state.instance.outputs.instance_id[count.index]
-  target_id        = var.instance_id
+  target_id        = var.instance_id[0]
   port             = 80
 }
 

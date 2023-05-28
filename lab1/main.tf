@@ -33,6 +33,10 @@ module "alb" {
   public_subnet      = module.network.public_subnets
   security_groups    = var.aws_security_group_alb
   private_subnet     = module.network.private_subnets 
-  target_id          = module.ec2_instance.instance_id
+  instance_id        = module.ec2_instance.instance_id
 }
 
+module "s3" {
+  source = "./modules/s3"
+  bucket-name = "bucket-trainee-nfq"
+}

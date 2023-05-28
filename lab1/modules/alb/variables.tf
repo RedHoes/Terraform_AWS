@@ -55,13 +55,5 @@ variable "security_groups" {
 }
 
 variable "instance_id" {
-  type = string
-}
-
-variable "target_id" {
-  type = string
-}
-
-variable "target_groups" {
   type = list(string)
 }
