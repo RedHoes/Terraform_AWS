@@ -52,7 +52,18 @@ module "s3" {
 #   source       = "./modules/alb"
 #   instance_id  = module.ec2_instance.instance_id
 # }
+# module "target_group_attachment" {
+#   source       = "./modules/alb"
+#   instance_id  = module.ec2_instance.instance_id
+# }
 
+# module "route53" {
+#   source  = "./modules/alb"
+#   zone_id = var.zone_id
+#   name    = var.name
+#   type    = var.type
+#   ttl     = var.ttl
+# }
 # module "route53" {
 #   source  = "./modules/alb"
 #   zone_id = var.zone_id

@@ -1,8 +1,0 @@
-.terraform
-.DS_Store
-.idea
-*.retry
-*.log
-*.plan
-*.tfvars
-*.tfstate*

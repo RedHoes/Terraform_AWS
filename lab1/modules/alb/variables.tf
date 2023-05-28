@@ -1,16 +1,13 @@
 variable "region"{
   type = string
-  default = "ap-southeast-1"
 }
 
 variable "load_balancer_type" {
   type = string
-  default = "application"
 }
 
 variable "load_balancer_name" {
   type = string
-  default = "trainee-alb"
 }
 
 variable "zone_id" {
@@ -25,7 +22,6 @@ variable "name" {
 
 variable "type" {
   type = string
-  default = "CNAME"
 }
 
 variable "ttl" {
@@ -35,7 +31,6 @@ variable "ttl" {
 
 variable "HTTP" {
   type = string
-  default = "HTTP"
 }
 
 variable "vpc_id" {

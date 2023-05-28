@@ -1,5 +1,5 @@
 resource "aws_security_group" "lab1_security_group" {
-  name        = "lab1_SC"
+  name        = "SecurityGroupEC2"
   description = "Security group for EC2 instances"
   vpc_id      = var.vpc_id
   # Allow port 22,80,443 for inbound traffic

@@ -48,7 +48,7 @@ variable "availability_zone"{
 variable "aws_security_group" {
   description = "ID or name of the AWS Security Group"
   type        = string
-  default     = "lab1_SC"
+  default     = "SecurityGroupEC2"
 }
 
 variable instance_type {
@@ -136,8 +136,13 @@ variable "HTTP" {
 variable "aws_security_group_alb" {
   description = "ID or name of the AWS ALB Security Group"
   type        = string
-  default     = "ALB_SC"
+  default     = "SecurityGroupALB"
 }
+
+# variable "instance_id" {
+#   type = string 
+#   description = "instance id"
+# }
 
 # variable "vpc_id" {
 #   type = string

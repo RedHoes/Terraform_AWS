@@ -73,4 +73,3 @@ resource "aws_route53_record" "trainee_dns" {
   ttl     = var.ttl
   records = [aws_lb.trainee_alb.dns_name]
 }
-
