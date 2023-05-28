@@ -27,16 +27,36 @@ module "ec2_instance" {
 
 module "alb" {
   source  = "./modules/alb" 
-  name = var.load_balancer_name
+  count = 2
+  load_balancer_name = var.load_balancer_name
+  region = var.region
   load_balancer_type = var.load_balancer_type
   vpc_id             = module.network.vpc_id
   public_subnet      = module.network.public_subnets
   security_groups    = var.aws_security_group_alb
   private_subnet     = module.network.private_subnets 
   instance_id        = module.ec2_instance.instance_id
+  HTTP               = var.HTTP
+  zone_id            = var.zone_id
+  name               = var.name
+  type               = var.type
+  ttl                = var.ttl
 }
 
 module "s3" {
   source = "./modules/s3"
   bucket-name = "bucket-trainee-nfq"
 }
+
+# module "target_group_attachment" {
+#   source       = "./modules/alb"
+#   instance_id  = module.ec2_instance.instance_id
+# }
+
+# module "route53" {
+#   source  = "./modules/alb"
+#   zone_id = var.zone_id
+#   name    = var.name
+#   type    = var.type
+#   ttl     = var.ttl
+# }
