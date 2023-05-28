@@ -1,5 +1,5 @@
 resource "aws_security_group" "lab1_security_group" {
-  name        = "ALB_SC"
+  name        = "SecurityGroupALB"
   description = "Security group for ALB"
   vpc_id  = var.vpc_id
 
@@ -73,4 +73,3 @@ resource "aws_route53_record" "trainee_dns" {
   ttl     = var.ttl
   records = [aws_lb.trainee_alb.dns_name]
 }
-
