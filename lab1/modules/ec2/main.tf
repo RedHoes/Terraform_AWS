@@ -58,12 +58,14 @@ resource "aws_instance" "lab1_ec2_instances" {
   ami                       = var.ami
   vpc_security_group_ids    = [aws_security_group.lab1_security_group.id]
   key_name                  = aws_key_pair.key-pair.id
+  iam_instance_profile = var.iam_instance_profile
 
   user_data = <<-EOF
     #!/bin/bash
     sudo apt update -y 
     sudo apt install -y nginx
     sudo service nginx start
+    sudo apt install awscli -y
   EOF
 
   tags = {

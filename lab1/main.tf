@@ -12,21 +12,22 @@ module "network" {
 }
 
 module "ec2_instance" {
-  source  = "./modules/ec2"
+  source = "./modules/ec2"
 
-  instance_type          = var.instance_type
-  availability_zone      = var.availability_zone
-  ami                    = var.ami
-  aws_security_group     = var.aws_security_group
-  instance_names         = var.instance_names
-  device_name            = var.device_name
-  aws_ebs_volume_size    = var.aws_ebs_volume_size
-  subnet_id              = module.network.public_subnets
-  vpc_id                 = module.network.vpc_id
+  instance_type        = var.instance_type
+  availability_zone    = var.availability_zone
+  ami                  = var.ami
+  aws_security_group   = var.aws_security_group
+  instance_names       = var.instance_names
+  device_name          = var.device_name
+  aws_ebs_volume_size  = var.aws_ebs_volume_size
+  subnet_id            = module.network.public_subnets
+  vpc_id               = module.network.vpc_id
+  iam_instance_profile = module.s3.iam_instance_profile
 }
 
 module "alb" {
-  source = "./modules/alb" 
+  source = "./modules/alb"
 
   load_balancer_name = var.load_balancer_name
   region             = var.region
@@ -34,7 +35,7 @@ module "alb" {
   vpc_id             = module.network.vpc_id
   public_subnet      = module.network.public_subnets
   security_groups    = var.aws_security_group_alb
-  private_subnet     = module.network.private_subnets 
+  private_subnet     = module.network.private_subnets
   instance_id        = module.ec2_instance.instance_id
   HTTP               = var.HTTP
   zone_id            = var.zone_id
@@ -44,6 +45,6 @@ module "alb" {
 }
 
 module "s3" {
-  source = "./modules/s3"
+  source      = "./modules/s3"
   bucket-name = "bucket-trainee-nfq"
 }

@@ -1,14 +1,14 @@
 output "vpc_id" {
-  value       = module.network.vpc_id
+  value = module.network.vpc_id
 }
 
 output "public_subnets" {
-#   value       = ["${aws_subnet.public_subnet.*.id}"]
+  #   value       = ["${aws_subnet.public_subnet.*.id}"]
   value = module.network.public_subnets
 }
 
 output "private_subnets" {
-#   value       = ["${aws_subnet.private_subnet.*.id}"]
+  #   value       = ["${aws_subnet.private_subnet.*.id}"]
   value = module.network.private_subnets
 }
 
@@ -27,5 +27,5 @@ output "security_group_id" {
 }
 
 output "public_ip" {
-  value       = module.ec2_instance.public_ip
+  value = module.ec2_instance.public_ip
 }
