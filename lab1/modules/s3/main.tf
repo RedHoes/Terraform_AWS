@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "bucket" {
 }
 
 resource "aws_iam_role" "role" {
-  name = "EC2-role-trainee"
+  name = "EC2-role-trainee-new"
   
   assume_role_policy = jsonencode({
 
@@ -53,6 +53,6 @@ resource "aws_iam_role_policy_attachment" "bucket_policy" {
 }
 
 resource "aws_iam_instance_profile" "profile" {
-  name = "instance-profile-trainee-devops"
+  name = "instance-profile-traineee-devops"
   role = aws_iam_role.role.name
 }

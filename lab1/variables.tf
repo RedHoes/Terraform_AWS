@@ -31,7 +31,7 @@ variable "public_subnets_cidr" {
 variable "private_subnets_cidr" {
   description = "CIDR block for private subnet"
   type        = list
-  default  = ["10.100.1.0/24", "10.100.2.0/24"] 
+  default     = ["10.100.1.0/24", "10.100.2.0/24"] 
 }
 
 variable "availability_zones" {
@@ -57,12 +57,12 @@ variable instance_type {
 }
 
 variable "aws_ebs_volume_size" {
-    type = number
+    type    = number
     default = "8"
 }
 
 variable "key_name"{
-    type = string
+    type    = string
     default = "Lab1 KeyGen"
 }
 
@@ -78,17 +78,17 @@ variable "instance_names" {
 
 variable "device_name"{
     description = "ebs device name"
-    default = "/dev/sdf"  
+    default     = "/dev/sdf"  
 }
 
 variable "cidr_blocks_public"{
-    type = string
+    type        = string
     description = "cidr block"
-    default = "10.0.1.0/24"
+    default     = "10.0.1.0/24"
 }
 
 variable "tcp" {
-    type = string
+    type    = string
     default = "tcp"
 }
 

@@ -55,7 +55,7 @@ resource "aws_instance" "lab1_ec2_instances" {
 
   user_data = <<-EOF
     #!/bin/bash
-    sudo apt update -y &&
+    sudo apt update -y 
     sudo apt install -y nginx
     sudo service nginx start
   EOF
@@ -71,9 +71,3 @@ resource "aws_volume_attachment" "ebs_attachment" {
   volume_id   = aws_ebs_volume.lab1_volumes[count.index].id
   instance_id = aws_instance.lab1_ec2_instances[count.index].id
 }
-
-
-
-
-
-

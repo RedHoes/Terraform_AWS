@@ -47,6 +47,14 @@ resource "aws_lb" "trainee_alb" {
   }     
 }
 
+resource "aws_lb_target_group_attachment" "instance_attachment" {
+  count            = 2
+  target_group_arn = aws_lb_target_group.trainee_target_group.arn
+  # target_id      = data.terraform_remote_state.instance.outputs.instance_id[count.index]
+  target_id        = var.instance_id[count.index]
+  port             = 80
+}
+
 resource "aws_lb_listener" "trainee_listener" {
   load_balancer_arn = aws_lb.trainee_alb.arn
   port              = "80"
@@ -56,14 +64,6 @@ resource "aws_lb_listener" "trainee_listener" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.trainee_target_group.arn
   }
-}
-
-resource "aws_lb_target_group_attachment" "instance_attachment" {
-  count            = 2
-  target_group_arn = aws_lb_target_group.trainee_target_group.arn
-  # target_id      = data.terraform_remote_state.instance.outputs.instance_id[count.index]
-  target_id        = var.instance_id[count.index]
-  port             = 80
 }
 
 resource "aws_route53_record" "trainee_dns" {
