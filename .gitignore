@@ -8,4 +8,4 @@
 *.plan
 *.tfstate*
 secret/*
-
+./files/*
