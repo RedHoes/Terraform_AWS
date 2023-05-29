@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "ap-southeast-1"
-}
-
 resource "aws_s3_bucket" "bucket" {
   bucket = var.bucket-name
 }
