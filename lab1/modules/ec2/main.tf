@@ -1,4 +1,4 @@
-resource "aws_key_pair" "long-key-pair" {
+resource "aws_key_pair" "key-pair" {
   key_name   = "Lab1 KeyGen"
   public_key = file("./files/lab1.pub")
 }
@@ -57,7 +57,7 @@ resource "aws_instance" "lab1_ec2_instances" {
   subnet_id                 = var.subnet_id[count.index]
   ami                       = var.ami
   vpc_security_group_ids    = [aws_security_group.lab1_security_group.id]
-  key_name                  = aws_key_pair.long-key-pair.id
+  key_name                  = aws_key_pair.key-pair.id
 
   user_data = <<-EOF
     #!/bin/bash
