@@ -4,7 +4,7 @@ variable "availability_zone" {
 }
 
 variable "aws_security_group" {
-  type    = string
+  type        = string
   description = "security group for ec2"
 }
 
@@ -14,9 +14,9 @@ variable "instance_type" {
 }
 
 variable "aws_ebs_volume_size" {
-  type = string
+  type        = string
   description = "EBS volume size"
-  default = 8
+  default     = 8
 }
 
 variable "instance_names" {
@@ -25,22 +25,22 @@ variable "instance_names" {
 }
 
 variable "ami" {
-  type = string
+  type        = string
   description = "AMI ID"
 }
 
 variable "device_name"{
-  type = string
+  type        = string
   description = "ebs device name"
 }
 
 variable "tcp" {
-  type = string
+  type    = string
   default = "tcp"
 }
 
 variable "subnet_id"{
-  type = list(string)
+  type        = list(string)
   description = "public subnet for ec2 instances"
 }
 

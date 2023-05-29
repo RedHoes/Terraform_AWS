@@ -1,7 +1,7 @@
 resource "aws_security_group" "lab1_security_group" {
-  name        = "sc_alb"
+  name        = "SecurityGroupforALB"
   description = "Security group for ALB"
-  vpc_id  = var.vpc_id
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port   = 80
@@ -62,7 +62,7 @@ resource "aws_lb_target_group_attachment" "instance_attachment" {
   count            = 2
   target_group_arn = aws_lb_target_group.trainee_target_group.arn
   # target_id      = data.terraform_remote_state.instance.outputs.instance_id[count.index]
-  target_id        = var.instance_id[0]
+  target_id        = var.instance_id[count.index]
   port             = 80
 }
 

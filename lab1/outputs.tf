@@ -18,7 +18,7 @@ output "public_route_table" {
 
 output "instance_id" {
   description = "ID of the EC2 instance"
-  value = module.ec2_instance.instance_id
+  value       = module.ec2_instance.instance_id
 }
 
 output "security_group_id" {

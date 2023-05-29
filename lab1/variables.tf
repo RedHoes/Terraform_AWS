@@ -136,7 +136,7 @@ variable "HTTP" {
 variable "aws_security_group_alb" {
   description = "ID or name of the AWS ALB Security Group"
   type        = string
-  default     = "SecurityGroupALB"
+  default     = "SecurityGroupforALB"
 }
 
 # variable "instance_id" {
