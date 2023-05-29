@@ -25,3 +25,7 @@ output "security_group_id" {
   description = "security group of EC2 instance"
   value       = module.ec2_instance.security_group_id
 }
+
+output "public_ip" {
+  value       = module.ec2_instance.public_ip
+}

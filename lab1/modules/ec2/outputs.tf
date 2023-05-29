@@ -8,6 +8,10 @@ output "security_group_id" {
   value       = aws_instance.lab1_ec2_instances.*.security_groups
 }
 
+output "public_ip" {
+  value       = aws_instance.lab1_ec2_instances.*.public_ip
+}
+
 # output "instance_public_ip" {
 #   description = "Public IP address of the EC2 instances"
 #   value       = aws_instance.lab1_ec2_instances.public_ip
