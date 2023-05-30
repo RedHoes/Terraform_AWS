@@ -9,7 +9,7 @@ output "security_group_id" {
 }
 
 output "public_ip" {
-  value       = aws_instance.lab1_ec2_instances.*.public_ip
+  value = aws_instance.lab1_ec2_instances.*.public_ip
 }
 
 # output "instance_public_ip" {

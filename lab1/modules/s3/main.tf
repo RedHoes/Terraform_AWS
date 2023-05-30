@@ -1,22 +1,24 @@
 resource "aws_s3_bucket" "bucket" {
-  bucket = var.bucket-name
+  bucket                  = var.bucket-name
+  block_public_acls       = true
+  ignore_public_acls      = true
 }
 
 resource "aws_iam_role" "role" {
   name = "EC2-role-trainee-new"
-  
+
   assume_role_policy = jsonencode({
 
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "ec2.amazonaws.com"
-      },
-      "Effect": "Allow"
-    }
-  ]
-})
+    "Statement" : [
+      {
+        "Action" : "sts:AssumeRole",
+        "Principal" : {
+          "Service" : "ec2.amazonaws.com"
+        },
+        "Effect" : "Allow"
+      }
+    ]
+  })
 }
 
 resource "aws_iam_policy" "bucket_policy" {
@@ -25,15 +27,15 @@ resource "aws_iam_policy" "bucket_policy" {
   description = "Allow"
 
   policy = jsonencode({
-    Version   = "2012-10-17",
+    Version = "2012-10-17",
     Statement = [
       {
-        Effect    = "Allow",
-        Action    = [
+        Effect = "Allow",
+        Action = [
           "s3:ListBucket",
           "s3:GetObject",
         ],
-        Resource  = [
+        Resource = [
           "arn:aws:s3:::${var.bucket-name}",
           "arn:aws:s3:::${var.bucket-name}/*",
         ],

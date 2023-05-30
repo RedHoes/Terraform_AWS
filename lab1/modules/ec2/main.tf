@@ -49,16 +49,16 @@ resource "aws_ebs_volume" "lab1_volumes" {
 }
 
 resource "aws_instance" "lab1_ec2_instances" {
-  count                     = length(var.instance_names)
-  availability_zone         = element(var.availability_zone, count.index)
-  instance_type             = var.instance_type
+  count             = length(var.instance_names)
+  availability_zone = element(var.availability_zone, count.index)
+  instance_type     = var.instance_type
 
   # subnet_id               = local.public_subnets[count.index]
-  subnet_id                 = var.subnet_id[count.index]
-  ami                       = var.ami
-  vpc_security_group_ids    = [aws_security_group.lab1_security_group.id]
-  key_name                  = aws_key_pair.key-pair.id
-  iam_instance_profile = var.iam_instance_profile
+  subnet_id              = var.subnet_id[count.index]
+  ami                    = var.ami
+  vpc_security_group_ids = [aws_security_group.lab1_security_group.id]
+  key_name               = aws_key_pair.key-pair.id
+  iam_instance_profile   = var.iam_instance_profile
 
   user_data = <<-EOF
     #!/bin/bash

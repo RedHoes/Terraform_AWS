@@ -1,11 +1,11 @@
 variable "environment" {
   description = "Deployment Environment"
-  default = "trainee"
+  default     = "trainee"
 }
 
 variable "vpc_name" {
   description = "Name of the VPC"
-  default = "trainee-vpc"
+  default     = "trainee-vpc"
   type        = string
 }
 
@@ -23,19 +23,19 @@ variable "vpc_cidr" {
 
 variable "public_subnets_cidr" {
   description = "CIDR block for public subnet"
-  type        = list
+  type        = list(any)
   default     = ["10.100.10.0/24", "10.100.20.0/24"]
 }
 
 
 variable "private_subnets_cidr" {
   description = "CIDR block for private subnet"
-  type        = list
-  default     = ["10.100.1.0/24", "10.100.2.0/24"]   
+  type        = list(any)
+  default     = ["10.100.1.0/24", "10.100.2.0/24"]
 }
 
 variable "availability_zones" {
-  type        = list
+  type        = list(any)
   description = "Available zones where resources will be deployed"
   default     = ["ap-southeast-1a", "ap-southeast-1b"]
 }

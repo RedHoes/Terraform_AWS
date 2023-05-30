@@ -29,7 +29,7 @@ variable "ami" {
   description = "AMI ID"
 }
 
-variable "device_name"{
+variable "device_name" {
   type        = string
   description = "ebs device name"
 }
@@ -39,7 +39,7 @@ variable "tcp" {
   default = "tcp"
 }
 
-variable "subnet_id"{
+variable "subnet_id" {
   type        = list(string)
   description = "public subnet for ec2 instances"
 }

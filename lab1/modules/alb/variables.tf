@@ -1,4 +1,4 @@
-variable "region"{
+variable "region" {
   type = string
 }
 
@@ -11,12 +11,12 @@ variable "load_balancer_name" {
 }
 
 variable "zone_id" {
-  type = string
-  default = "Z193E5Z0IWYOLY" 
+  type    = string
+  default = "Z193E5Z0IWYOLY"
 }
 
 variable "name" {
-  type = string
+  type    = string
   default = "trainee.devops.nfq.asia"
 }
 
@@ -25,7 +25,7 @@ variable "type" {
 }
 
 variable "ttl" {
-  type = number
+  type    = number
   default = 300
 }
 

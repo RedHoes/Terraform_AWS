@@ -17,7 +17,7 @@ resource "aws_internet_gateway" "ig" {
 
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = aws_vpc.vpc.id
-  count 		              = length(var.public_subnets_cidr)
+  count                   = length(var.public_subnets_cidr)
   cidr_block              = element(var.public_subnets_cidr, count.index)
   availability_zone       = element(var.availability_zones, count.index)
   map_public_ip_on_launch = true
@@ -29,7 +29,7 @@ resource "aws_subnet" "public_subnet" {
 
 resource "aws_subnet" "private_subnet" {
   vpc_id                  = aws_vpc.vpc.id
-  count 		              = length(var.private_subnets_cidr)
+  count                   = length(var.private_subnets_cidr)
   cidr_block              = element(var.private_subnets_cidr, count.index)
   availability_zone       = element(var.availability_zones, count.index)
   map_public_ip_on_launch = false
@@ -58,9 +58,9 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_route" "public_internet_gateway" {
-  route_table_id         = "${aws_route_table.public.id}"
+  route_table_id         = aws_route_table.public.id
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = "${aws_internet_gateway.ig.id}"
+  gateway_id             = aws_internet_gateway.ig.id
 }
 
 resource "aws_route_table_association" "public" {
@@ -76,7 +76,7 @@ resource "aws_route_table_association" "private" {
 }
 
 resource "aws_network_acl" "acl" {
-  vpc_id = aws_vpc.vpc.id
+  vpc_id     = aws_vpc.vpc.id
   subnet_ids = toset(aws_subnet.private_subnet.*.id)
 
   tags = {
@@ -117,4 +117,3 @@ resource "aws_network_acl_rule" "rule_443" {
   from_port      = 443
   to_port        = 443
 }
-
