@@ -1,14 +1,11 @@
 resource "aws_s3_bucket" "bucket" {
-  bucket                  = var.bucket-name
-  block_public_acls       = true
-  ignore_public_acls      = true
+  bucket = var.bucket-name
 }
 
 resource "aws_iam_role" "role" {
   name = "EC2-role-trainee-new"
 
   assume_role_policy = jsonencode({
-
     "Statement" : [
       {
         "Action" : "sts:AssumeRole",

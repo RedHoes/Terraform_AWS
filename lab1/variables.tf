@@ -134,7 +134,6 @@ variable "aws_security_group_alb" {
   default     = "SecurityGroupforALB"
 }
 
-
 variable "availability_zone" {
   type    = list(string)
   default = ["ap-southeast-1a", "ap-southeast-1b"]

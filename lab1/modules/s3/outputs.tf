@@ -17,4 +17,3 @@ output "iam_role_arn" {
 output "iam_instance_profile" {
   value = aws_iam_instance_profile.profile.name
 }
-
