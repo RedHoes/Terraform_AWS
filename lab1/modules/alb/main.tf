@@ -10,7 +10,6 @@ resource "aws_security_group" "lab1_security_group" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # Allow all outbound traffic 
   egress {
     from_port   = 0
     to_port     = 0
@@ -50,7 +49,6 @@ resource "aws_lb_target_group" "trainee_target_group" {
 resource "aws_lb_target_group_attachment" "instance_attachment" {
   count            = 2
   target_group_arn = aws_lb_target_group.trainee_target_group.arn
-  # target_id      = data.terraform_remote_state.instance.outputs.instance_id[count.index]
   target_id = var.instance_id[count.index]
   port      = 80
 }

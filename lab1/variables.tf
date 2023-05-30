@@ -40,11 +40,6 @@ variable "availability_zones" {
   default     = ["ap-southeast-1a", "ap-southeast-1b"]
 }
 
-variable "availability_zone" {
-  type    = list(string)
-  default = ["ap-southeast-1a", "ap-southeast-1b"]
-}
-
 variable "aws_security_group" {
   description = "ID or name of the AWS Security Group"
   type        = string
@@ -139,22 +134,8 @@ variable "aws_security_group_alb" {
   default     = "SecurityGroupforALB"
 }
 
-# variable "instance_id" {
-#   type = string 
-#   description = "instance id"
-# }
 
-# variable "vpc_id" {
-#   type = string
-#   default = "value"
-# }
-
-# variable "public_subnet" {
-#   type = string
-#   default = "value"
-# }
-
-# variable "private_subnet" {
-#   type = string
-#   default = "value"
-# }
+variable "availability_zone" {
+  type    = list(string)
+  default = ["ap-southeast-1a", "ap-southeast-1b"]
+}

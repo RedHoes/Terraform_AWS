@@ -7,7 +7,7 @@ resource "aws_security_group" "lab1_security_group" {
   name        = "SecurityGroupEC2"
   description = "Security group for EC2 instances"
   vpc_id      = var.vpc_id
-  # Allow port 22,80,443 for inbound traffic
+  
   ingress {
     from_port   = 22
     to_port     = 22
@@ -29,7 +29,6 @@ resource "aws_security_group" "lab1_security_group" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # Allow all outbound traffic 
   egress {
     from_port   = 0
     to_port     = 0
@@ -53,7 +52,6 @@ resource "aws_instance" "lab1_ec2_instances" {
   availability_zone = element(var.availability_zone, count.index)
   instance_type     = var.instance_type
 
-  # subnet_id               = local.public_subnets[count.index]
   subnet_id              = var.subnet_id[count.index]
   ami                    = var.ami
   vpc_security_group_ids = [aws_security_group.lab1_security_group.id]
