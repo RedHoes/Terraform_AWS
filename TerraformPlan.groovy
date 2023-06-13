@@ -34,6 +34,7 @@ pipeline {
                 dir("lab1") {
                     sh '''
                         ls -la
+                        mkdir files
                         cp ${lab1} files/lab1
                         cp ${lab1pub} files/lab1.pub
                         terraform init
