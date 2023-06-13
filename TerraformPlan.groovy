@@ -32,8 +32,15 @@ pipeline {
             }
             steps {
                 dir("lab1") {
+                  // sudo rm -rf files
                     sh '''
-                      sudo rm -rf files
+                      mkdir files
+                      ls -la 
+                      cp ${lab1} files/lab1
+                      cp ${lab1pub} files/lab1.pub
+                      terraform init
+                      terraform validate
+                      terraform plan
                     '''
                 }
             }
@@ -46,7 +53,7 @@ pipeline {
 
     post {
         always { 
-            slackSend(channel: 'alerts', token: env.trainee_webhook_token, color: "good", message: "Hello World")
+            slackSend(channel: 'alerts', tokenCredentialId: env.trainee_webhook_token, color: "good", message: "Hello World")
         }
     } 
 }
