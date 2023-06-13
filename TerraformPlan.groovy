@@ -54,7 +54,7 @@ pipeline {
 
     post {
         always { 
-            slackSend(channel: 'alerts', token: env.trainee_webhook_token, color: "good", message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+            slackSend(channel: 'alerts', token: "$trainee_webhook_token", color: "good", message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
         }
     } 
 }
