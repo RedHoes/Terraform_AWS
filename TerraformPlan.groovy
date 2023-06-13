@@ -1,7 +1,8 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'gitBranch', defaultValue: 'DEVOPS-2963-Lab1', description: 'Git Branch')
+        string(name: 'gitBranch', defaultValue: 'DEVOPS-2963-Lab1', description: 'Git Branch'),
+        string(name: 'gitBranch', defaultValue: 'main', description: 'Git Branch')
     }
 
   triggers {
@@ -20,38 +21,19 @@ pipeline {
       silentResponse: false,
 
       regexpFilterText: '$gitBranch',
-      regexpFilterExpression: '^refs/pull/DEVOPS-2963-Lab1'
+      regexpFilterExpression: '^refs/heads/DEVOPS-2963-Lab1'
     )
   }
-    // stages {
-    //     stage('Terraform plan') {
-    //         environment {
-    //             lab1 = credentials('Long-Private-Key')
-    //             lab1pub = credentials('	Long-public-Key')
-    //         }
-    //         steps {
-    //             dir("lab1") {
-    //                 sh '''
-    //                     cp ${lab1} files/lab1
-    //                     cp ${lab1pub} files/lab1.pub
-    //                     terraform init
-    //                     terraform validate
-    //                     terraform plan
-    //                 '''
-    //             }
-    //         }
-    //     }
-    // }
 
     stages {
         stage('Process Webhook') {
             steps {
                 script {
                     // Check if it's a pull request or merge request
-                    if (env.gitBranch.startsWith('refs/pull/')) {
+                    if (${params.gitBranch} == 'DEVOPS-2963-Lab1') {
                         // Execute pull request function
                         pullRequestFunction()
-                    } else if (env.gitBranch.startsWith('refs/heads/')) {
+                    } else if (${params.gitBranch} == 'main') {
                         // Execute merge request function
                         mergeRequestFunction()
                     }
@@ -63,28 +45,42 @@ pipeline {
 
 def pullRequestFunction() {
     stage('Pull Request Function') {
+        environment {
+                lab1 = credentials('Long-Private-Key')
+                lab1pub = credentials('Long-public-Key')
+        }
         steps {
-          sh '''
-            cp ${lab1} files/lab1
-            cp ${lab1pub} files/lab1.pub
-            terraform init
-            terraform validate
-            terraform plan
-          '''
+            dir("lab1") {
+                sh '''
+                    ls -la
+                    cp ${lab1} files/lab1
+                    cp ${lab1pub} files/lab1.pub
+                    terraform init
+                    terraform validate
+                    terraform plan
+                '''
+            }
         }
     }
 }
 
 def mergeRequestFunction() {
     stage('Merge Request Function') {
+        environment {
+                lab1 = credentials('Long-Private-Key')
+                lab1pub = credentials('Long-public-Key')
+        }
         steps {
-          sh '''
-            cp ${lab1} files/lab1
-            cp ${lab1pub} files/lab1.pub
-            terraform init
-            terraform validate
-            terraform plan
-          '''
+            dir("lab1") {
+                sh '''
+                    ls -la
+                    cp ${lab1} files/lab1
+                    cp ${lab1pub} files/lab1.pub
+                    terraform init
+                    terraform validate
+                    terraform apply
+                '''
+            }
         }
     }
 }
