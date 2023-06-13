@@ -34,6 +34,7 @@ pipeline {
                 dir("lab1") {
                     sh '''
                         ls -la
+                        mkdir files
                         cp ${lab1} files/lab1
                         cp ${lab1pub} files/lab1.pub
                         terraform init
@@ -51,7 +52,7 @@ pipeline {
 
     post {
         always { 
-            slackSend(channel: 'alerts', token: env.trainee_webhook_token, color: "good", message: "Hi")
+            slackSend(channel: 'alerts', token: env.trainee_webhook_token, color: "good", message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
         }
     } 
 }
