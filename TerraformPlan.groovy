@@ -46,7 +46,7 @@ pipeline {
     }
 
     environment {
-      trainee_webhook_token = credentials('trainee_webhook_token')
+      trainee_webhook_token = credentials('ad6bcdb0-a0ab-4737-b53e-b1fd628c2064')
       lab1 = credentials('Long-Private-Key')
     }
 
