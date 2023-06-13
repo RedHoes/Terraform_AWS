@@ -53,7 +53,7 @@ pipeline {
 
     post {
         always { 
-            slackSend(channel: 'alerts', tokenCredentialId: env.trainee_webhook_token, color: "good", message: "Hello World")
+            slackSend(channel: 'alerts', token: env.trainee_webhook_token, color: "good", message: "Hello World")
         }
     } 
 }
