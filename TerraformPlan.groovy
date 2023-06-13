@@ -20,7 +20,7 @@ pipeline {
       silentResponse: false,
 
       regexpFilterText: '$gitBranch',
-      regexpFilterExpression: '^refs/heads/DEVOPS-2963-Lab1'
+      regexpFilterExpression: '^refs/pull/DEVOPS-2963-Lab1'
     )
   }
     // stages {
