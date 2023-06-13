@@ -33,15 +33,7 @@ pipeline {
             steps {
                 dir("lab1") {
                     sh '''
-                        ls -la
-                        sudo chmod 600 files
-                        sudo chmod 600 files/lab1
-                        sudo chmod 600 files/lab1.pub
-                        sudo cp ${lab1} files/lab1
-                        sudo cp ${lab1pub} files/lab1.pub
-                        terraform init
-                        terraform validate
-                        terraform plan
+                      sudo rm -rf files
                     '''
                 }
             }
@@ -54,8 +46,7 @@ pipeline {
 
     post {
         always { 
-            slackSend(channel: 'alerts', token: env.trainee_webhook_token, color: "good", message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+            slackSend(channel: 'alerts', token: env.trainee_webhook_token, color: "good", message: "Hello World")
         }
     } 
 }
-// .
