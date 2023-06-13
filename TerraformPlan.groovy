@@ -20,7 +20,7 @@ pipeline {
       silentResponse: false,
 
       regexpFilterText: '$gitBranch',
-      regexpFilterExpression: '^refs/heads/DEVOPS-2963-Lab1'
+      regexpFilterExpression: '^refs/pull/DEVOPS-2963-Lab1'
     )
   }
     // stages {
@@ -48,10 +48,10 @@ pipeline {
             steps {
                 script {
                     // Check if it's a pull request or merge request
-                    if (env.gitBranch.startsWith('refs/heads/')) {
+                    if (env.gitBranch.startsWith('refs/pull/')) {
                         // Execute pull request function
                         pullRequestFunction()
-                    } else if (env.gitBranch.startsWith('refs/merges/')) {
+                    } else if (env.gitBranch.startsWith('refs/heads/')) {
                         // Execute merge request function
                         mergeRequestFunction()
                     }
@@ -79,9 +79,11 @@ def mergeRequestFunction() {
     stage('Merge Request Function') {
         steps {
           sh '''
+            cp ${lab1} files/lab1
+            cp ${lab1pub} files/lab1.pub
             terraform init
             terraform validate
-            terraform apply
+            terraform plan
           '''
         }
     }
