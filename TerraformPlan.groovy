@@ -50,9 +50,9 @@ pipeline {
     }
 
     post {
-    always { 
-      slackSend(channel: "alerts", token: "$trainee_webhook_token", color: "good", message: "Hi")
-    }
-  } 
+        always { 
+            slackSend(channel: 'alerts', token: env.trainee_webhook_token, color: "good", message: "Hi")
+        }
+    } 
 }
 // .
