@@ -52,7 +52,7 @@ pipeline {
 
     post {
       always { 
-        slackSend(channel: "alerts", token: "$SLACK_WEBHOOK_TRAINEE", message: "Hello world")
+        slackSend(channel: "alerts", token: "$trainee_webhook_token", message: "Hello world")
       }
     } 
 }
