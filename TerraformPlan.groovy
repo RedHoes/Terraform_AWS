@@ -34,6 +34,7 @@ pipeline {
                 dir("lab1") {
                   // sudo rm -rf files
                     sh '''
+                      sudo rm -rf files
                       mkdir files
                       ls -la 
                       cp ${lab1} files/lab1
