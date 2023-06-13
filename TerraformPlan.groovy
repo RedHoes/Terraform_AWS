@@ -28,7 +28,7 @@ pipeline {
         stage('Terraform plan') {
             environment {
                 lab1 = credentials('Long-Private-Key')
-                lab1pub = credentials('Long-public-Key')
+                lab1pub = credentials('    Long-public-Key')
             }
             steps {
                 dir("lab1") {

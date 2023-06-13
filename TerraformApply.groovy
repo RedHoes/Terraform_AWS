@@ -33,9 +33,12 @@ pipeline {
             steps {
                 dir("lab1") {
                     sh '''
+                        ls -la
+                        cp ${lab1} files/lab1
+                        cp ${lab1pub} files/lab1.pub
                         terraform init
                         terraform validate
-                        terraform plan
+                        terraform apply
                     '''
                 }
             }
