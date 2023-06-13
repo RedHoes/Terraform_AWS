@@ -1,8 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'gitBranch', defaultValue: 'DEVOPS-2963-Lab1', description: 'Git Branch'),
-        string(name: 'gitBranch', defaultValue: 'main', description: 'Git Branch')
+        string(name: 'gitBranch', defaultValue: ['DEVOPS-2963-Lab1', 'main'], description: 'Git Branch')
     }
 
   triggers {
@@ -23,7 +22,7 @@ pipeline {
       regexpFilterText: '$gitBranch',
       regexpFilterExpression: '^refs/heads/DEVOPS-2963-Lab1'
     )
-  }
+    }
 
     stages {
         stage('Process Webhook') {
@@ -36,11 +35,11 @@ pipeline {
                     } else if (${params.gitBranch} == 'main') {
                         // Execute merge request function
                         mergeRequestFunction()
-                    }
                 }
             }
         }
     }
+}
 }
 
 def pullRequestFunction() {
