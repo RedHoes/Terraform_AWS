@@ -28,7 +28,7 @@ pipeline {
         stage('Terraform plan') {
             environment {
                 lab1 = credentials('Long-Private-Key')
-                lab1pub = credentials('    Long-public-Key')
+                lab1pub = credentials('Long-public-Key')
             }
             steps {
                 dir("lab1") {
@@ -44,4 +44,15 @@ pipeline {
             }
         }
     }
+
+    environment {
+      trainee_webhook_token = credentials('trainee_webhook_token')
+      lab1 = credentials('Long-Private-Key')
+    }
+
+    post {
+      always { 
+        slackSend(channel: "alerts", token: "$SLACK_WEBHOOK_TRAINEE", message: "Hello world")
+      }
+    } 
 }
