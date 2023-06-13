@@ -20,7 +20,7 @@ pipeline {
       silentResponse: false,
 
       regexpFilterText: '$gitBranch',
-      regexpFilterExpression: '^refs/pull/DEVOPS-2963-Lab1'
+      regexpFilterExpression: '^refs/heads/DEVOPS-2963-Lab1'
     )
   }
     // stages {
@@ -48,10 +48,10 @@ pipeline {
             steps {
                 script {
                     // Check if it's a pull request or merge request
-                    if (env.gitBranch.startsWith('refs/pull/')) {
+                    if (env.gitBranch.startsWith('refs/heads/')) {
                         // Execute pull request function
                         pullRequestFunction()
-                    } else if (env.gitBranch.startsWith('refs/heads/')) {
+                    } else if (env.gitBranch.startsWith('refs/merges/')) {
                         // Execute merge request function
                         mergeRequestFunction()
                     }
