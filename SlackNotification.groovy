@@ -13,13 +13,14 @@ pipeline {
         slackTimestamp = true
     }
 
-    // stages {
-    //     stage('Build') {
-    //         steps {
-    //             build job: 'Jenkin-pipeline-long-plan', wait: true, propagate: false
-    //         }
-    //     }
-    // }
+    stages {
+        stage('Build') {
+            steps {
+                // build job: 'Jenkin-pipeline-long-plan', wait: true, propagate: false
+            }
+        }
+    }
+
     post {
         always {
             slackSend(
