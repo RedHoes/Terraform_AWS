@@ -19,13 +19,13 @@ pipeline {
                     events: [prOpened()]
     }
 
-    stages {
-        stage('Build') {
-            steps {
-                build job: 'Jenkin-pipeline-long-plan', wait: true, propagate: false
-            }
-        }
-    }
+    // stages {
+    //     stage('Build') {
+    //         steps {
+    //             build job: 'Jenkin-pipeline-long-plan', wait: true, propagate: false
+    //         }
+    //     }
+    // }
     post {
         always {
             slackSend(
