@@ -16,7 +16,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // build job: 'Jenkin-pipeline-long-plan', wait: true, propagate: false
+                sh '''
+                    ls -la                    
+                '''
             }
         }
     }
