@@ -1,3 +1,4 @@
+/* groovylint-disable LineLength */
 pipeline {
     agent any
     parameters {
@@ -54,7 +55,7 @@ pipeline {
 
     post {
         always { 
-            slackSend(channel: 'alerts', teamDomain: 'nfq-international' ,token: env.trainee_webhook_token, message: "Hello World")
+            slackSend(channel: 'alerts', baseUrl: 'https://nfq-international.slack.com', teamDomain: 'nfq-international' ,token: env.trainee_webhook_token, message: "Hello World")
         }
     } 
 }
