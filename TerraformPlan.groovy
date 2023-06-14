@@ -52,8 +52,12 @@ pipeline {
         }
     }
 
+    node {
+        withCredentials([string(credentialsId: 'trainee-slack-token', variable: 'SECRET')])
+    }
+
     environment {
-        trainee_webhook_token = '43243212'
+        // trainee_webhook_token = credentials('trainee-slack-token')
         slackBaseUrl = 'https://nfq-international.slack.com/'
         slackTeamDomain = 'nfq-international'
         slackChannel = 'alerts'
@@ -66,9 +70,9 @@ pipeline {
     }
 
     post {
-        always{
+        always { 
             slackSend(
-            token: env.trainee_webhook_token,
+            token: '${SECRET}',
             baseUrl: slackBaseUrl,
             teamDomain: slackTeamDomain,
             channel: slackChannel,

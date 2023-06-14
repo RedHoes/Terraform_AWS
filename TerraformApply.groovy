@@ -16,9 +16,8 @@ pipeline {
 
       printContributedVariables: true,
       printPostContent: true,
-
       silentResponse: false,
-
+      
       regexpFilterText: '$gitBranch',
       regexpFilterExpression: '^refs/heads/main'
     )
