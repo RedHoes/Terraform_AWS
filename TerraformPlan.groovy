@@ -54,7 +54,7 @@ pipeline {
 
     post {
         always { 
-            slackSend(channel: 'alerts', token: env.trainee_webhook_token, color: "good", message: "Hello World")
+            slackSend(channel: 'alerts', teamDomain: 'nfq-international' ,token: env.trainee_webhook_token, message: "Hello World")
         }
     } 
 }

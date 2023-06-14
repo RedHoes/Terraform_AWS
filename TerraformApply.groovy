@@ -38,7 +38,7 @@ pipeline {
                         cp ${lab1pub} files/lab1.pub
                         terraform init
                         terraform validate
-                        terraform apply
+                        echo "yes" | terraform apply
                     '''
                 }
             }
