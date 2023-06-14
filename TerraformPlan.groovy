@@ -68,7 +68,7 @@ pipeline {
     post {
         always { 
             slackSend(
-            token: env.trainee_webhook_token
+            token: env.trainee_webhook_token,
             baseUrl: slackBaseUrl,
             teamDomain: slackTeamDomain,
             channel: slackChannel,
