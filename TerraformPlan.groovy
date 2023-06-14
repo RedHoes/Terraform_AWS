@@ -4,7 +4,6 @@ pipeline {
     agent any
     parameters {
         string(name: 'gitBranch', defaultValue: 'DEVOPS-2963-Lab1', description: 'Git Branch')
-        withCredentials([string(credentialsId: 'trainee-slack-token', variable: 'SECRET')])
     }
 
     triggers {
@@ -54,7 +53,7 @@ pipeline {
     }
 
     environment {
-        // trainee_webhook_token = credentials('trainee-slack-token')
+        trainee_webhook_token = credentials('trainee-slack-token')
         slackBaseUrl = 'https://nfq-international.slack.com/'
         slackTeamDomain = 'nfq-international'
         slackChannel = 'alerts'
@@ -69,7 +68,7 @@ pipeline {
     post {
         always { 
             slackSend(
-            token: '${SECRET}',
+            token: env.trainee_webhook_token
             baseUrl: slackBaseUrl,
             teamDomain: slackTeamDomain,
             channel: slackChannel,
