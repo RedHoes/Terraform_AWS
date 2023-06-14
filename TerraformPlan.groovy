@@ -58,7 +58,7 @@ pipeline {
 
     post {
         always {
-            slackSend channel: 'alerts'
+            slackSend channel: 'alerts', baseUrl: 'https://nfq-international.slack.com', teamDomain: 'nfq-international' ,token: env.trainee_webhook_token, message: 'Hello World'
         }
     } 
 }
