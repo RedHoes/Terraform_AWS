@@ -13,6 +13,12 @@ pipeline {
         slackTimestamp = true
     }
 
+    triggers {
+        pullRequest sourceBranchFilter: 'DEVOPS-2963-Lab1',
+                    targetBranchFilter: 'main',
+                    events: [prOpened()]
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -22,7 +28,7 @@ pipeline {
     }
     post {
         always {
-            slackSend (
+            slackSend(
                 token: env.trainee_webhook_token,
                 baseUrl: slackBaseUrl,
                 teamDomain: slackTeamDomain,
