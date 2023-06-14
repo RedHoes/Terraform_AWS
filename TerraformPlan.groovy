@@ -53,7 +53,7 @@ pipeline {
     }
 
     environment {
-        trainee_webhook_token = credentials('trainee-slack-token')
+        trainee_webhook_token = '43243212'
         slackBaseUrl = 'https://nfq-international.slack.com/'
         slackTeamDomain = 'nfq-international'
         slackChannel = 'alerts'
