@@ -52,7 +52,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                build job: 'Jenkin-pipeline-long-plan', wait: true, propagate: false
+                build job: 'Jenkin-pipeline-long-slack', wait: true, propagate: false
             }
         }
     }
