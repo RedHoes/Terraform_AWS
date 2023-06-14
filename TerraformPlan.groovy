@@ -66,9 +66,8 @@ pipeline {
     }
 
     post {
-        always {
-          slackSend( 
-            channel: 'alerts' ,
+        always{
+            slackSend(
             token: env.trainee_webhook_token,
             baseUrl: slackBaseUrl,
             teamDomain: slackTeamDomain,
@@ -79,7 +78,7 @@ pipeline {
             notifyCommitters: false,
             iconEmoji: slackIconEmoji,
             username: slackUsername,
-            timestamp: slackTimestamp
+            timestamp: slackTimestamp,
             message: 'Hello World'
         )}
     }
