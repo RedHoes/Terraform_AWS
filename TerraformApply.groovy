@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'gitBranch', defaultValue: 'DEVOPS-2963-Lab1', description: 'Git Branch')
+        string(name: 'gitBranch', defaultValue: 'main', description: 'Git Branch')
     }
 
   triggers {
@@ -19,7 +19,7 @@ pipeline {
       silentResponse: false,
 
       regexpFilterText: '$gitBranch',
-      regexpFilterExpression: '^refs/heads/DEVOPS-2963-Lab1'
+      regexpFilterExpression: '^refs/heads/main'
     )
   }
 
