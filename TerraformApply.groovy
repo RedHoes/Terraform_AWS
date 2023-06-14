@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'gitBranch', defaultValue: 'main', description: 'Git Branch')
+        string(name: 'gitBranch', defaultValue: 'DEVOPS-2963-Lab1', description: 'Git Branch')
     }
 
   triggers {
@@ -17,14 +17,14 @@ pipeline {
       printContributedVariables: true,
       printPostContent: true,
       silentResponse: false,
-      
+
       regexpFilterText: '$gitBranch',
-      regexpFilterExpression: '^refs/heads/main'
+      regexpFilterExpression: '^refs/heads/DEVOPS-2963-Lab1'
     )
   }
 
     stages {
-        stage('Terraform plan') {
+        stage('Terraform apply') {
             environment {
                 lab1 = credentials('Long-Private-Key')
                 lab1pub = credentials('Long-public-Key')
@@ -32,6 +32,8 @@ pipeline {
             steps {
                 dir("lab1") {
                     sh '''
+                        sudo rm -rf files
+                        mkdir files
                         ls -la
                         cp ${lab1} files/lab1
                         cp ${lab1pub} files/lab1.pub
