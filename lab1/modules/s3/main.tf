@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "bucket" {
 }
 
 resource "aws_iam_role" "role" {
-  name = "EC2-role-trainee-new"
+  name = "EC2-role-new"
 
   assume_role_policy = jsonencode({
     "Statement" : [
@@ -48,8 +48,6 @@ resource "aws_iam_role_policy_attachment" "bucket_policy" {
 }
 
 resource "aws_iam_instance_profile" "profile" {
-  name = "instance-profile-traineee-devops"
+  name = "instance-profile-devops"
   role = aws_iam_role.role.name
 }
-
-// Jenkins 

@@ -9,3 +9,5 @@
 *.tfstate*
 secret/*
 */files/*
+.modules.alb.variables.tf
+SlackNotification.groovy

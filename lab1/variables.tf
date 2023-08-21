@@ -1,11 +1,11 @@
 variable "environment" {
   description = "Deployment Environment"
-  default     = "trainee"
+  default     = "env"
 }
 
 variable "vpc_name" {
   description = "Name of the VPC"
-  default     = "trainee-vpc"
+  default     = "vpc"
   type        = string
 }
 
@@ -68,7 +68,7 @@ variable "ami" {
 
 variable "instance_names" {
   type    = list(string)
-  default = ["trainee-instance-1", "trainee-instance-2"]
+  default = ["instance-1", "instance-2"]
 }
 
 variable "device_name" {
@@ -100,7 +100,7 @@ variable "load_balancer_type" {
 
 variable "load_balancer_name" {
   type    = string
-  default = "trainee-alb"
+  default = "alb"
 }
 
 variable "zone_id" {
@@ -110,7 +110,7 @@ variable "zone_id" {
 
 variable "name" {
   type    = string
-  default = "trainee.devops.nfq.asia"
+  default = "example.com"
 }
 
 variable "type" {

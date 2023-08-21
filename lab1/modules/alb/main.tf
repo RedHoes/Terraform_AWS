@@ -18,7 +18,7 @@ resource "aws_security_group" "lab1_security_group" {
   }
 }
 
-resource "aws_lb" "trainee_alb" {
+resource "aws_lb" "alb" {
   name               = var.load_balancer_name
   internal           = false
   load_balancer_type = var.load_balancer_type
@@ -26,12 +26,12 @@ resource "aws_lb" "trainee_alb" {
   security_groups    = [aws_security_group.lab1_security_group.id]
 
   tags = {
-    Name = "trainee-alb"
+    Name = "alb"
   }
 }
 
-resource "aws_lb_target_group" "trainee_target_group" {
-  name     = "trainee-target-group"
+resource "aws_lb_target_group" "target_group" {
+  name     = "target-group"
   port     = 80  
   protocol = "HTTP"
   vpc_id   = var.vpc_id
@@ -48,26 +48,26 @@ resource "aws_lb_target_group" "trainee_target_group" {
 
 resource "aws_lb_target_group_attachment" "instance_attachment" {
   count            = 2
-  target_group_arn = aws_lb_target_group.trainee_target_group.arn
+  target_group_arn = aws_lb_target_group.target_group.arn
   target_id = var.instance_id[count.index]
   port      = 80  
 }
 
-resource "aws_lb_listener" "trainee_listener" {
-  load_balancer_arn = aws_lb.trainee_alb.arn
+resource "aws_lb_listener" "listener" {
+  load_balancer_arn = aws_lb.alb.arn
   port              = "80"   
   protocol          = var.HTTP
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.trainee_target_group.arn
+    target_group_arn = aws_lb_target_group.target_group.arn
   }
 }
 
-resource "aws_route53_record" "trainee_dns" {
+resource "aws_route53_record" "dns" {
   zone_id = var.zone_id
   name    = var.name
   type    = var.type
   ttl     = var.ttl
-  records = [aws_lb.trainee_alb.dns_name]
+  records = [aws_lb.alb.dns_name]
 }

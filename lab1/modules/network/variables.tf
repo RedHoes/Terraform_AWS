@@ -1,11 +1,11 @@
 variable "environment" {
   description = "Deployment Environment"
-  default     = "trainee"
+  default     = "env"
 }
 
 variable "vpc_name" {
   description = "Name of the VPC"
-  default     = "trainee-vpc"
+  default     = "vpc"
   type        = string
 }
 

@@ -46,5 +46,5 @@ module "alb" {
 
 module "s3" {
   source      = "./modules/s3"
-  bucket-name = "bucket-trainee-nfq"
+  bucket-name = "bucket-long"
 }

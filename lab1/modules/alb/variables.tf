@@ -17,7 +17,7 @@ variable "zone_id" {
 
 variable "name" {
   type    = string
-  default = "trainee.devops.nfq.asia"
+  default = "example.com"
 }
 
 variable "type" {
